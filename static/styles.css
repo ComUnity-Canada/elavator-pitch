@@ -1,0 +1,32 @@
+/* styles.css */
+h1 {
+    color: #4CAF50;
+}
+.stButton>button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Ensure full-height layout */
+html, body, [data-testid="stAppViewContainer"] {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Push main content to take available space */
+[data-testid="stAppViewBlockContainer"] {
+    flex: 1;
+}
+
+/* Sticky Footer */
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
