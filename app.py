@@ -1,5 +1,4 @@
 import streamlit as st
-# import time
 from navigation import render_navigation_bar
 from footer import render_footer
 from helpers import generate_pitch
@@ -8,10 +7,6 @@ def load_css():
     with open("static/styles.css") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# # Reload the CSS file on change so that the changes are reflected immediately
-# def reload_css():
-#     time.sleep(0.1)  # Small delay to ensure file changes are detected
-#     st.markdown(f'<meta http-equiv="refresh" content="0">', unsafe_allow_html=True)
 
 # Load CSS
 load_css()
@@ -29,7 +24,8 @@ role = st.text_input("Current Role / Aspiration *", placeholder="E.g., Full-Stac
 industry = st.text_input("Industry / Field of Interest *", placeholder="E.g., Tech, FinTech, AI, eCommerce")
 work_experience = st.text_area("Work Experience *", placeholder="Summarize your work experience")
 strengths = st.text_area("Top Skills & Strengths *", placeholder="E.g., JavaScript, React, problem-solving, teamwork")
-career_goals = st.text_area("Career Goals *", placeholder="What are you looking for? (Job, networking, freelance, mentorship, etc.)")
+short_career_goals = st.text_area("Short Term Career Goals *", placeholder="What are you looking for in the next couple of weeks/months? (Job, networking, freelance, mentorship, etc.)")
+long_career_goals = st.text_area("Long Term Career Goals *", placeholder="What do you hope to achieve in the future? (Designation, Personal Achievement, etc.)")
 target_audience = st.text_input("Target Audience *", placeholder="E.g., Recruiters, hiring managers, startup founders")
 
 # Achievements (Optional)
@@ -42,15 +38,15 @@ education_level = st.selectbox(
 )
 
 # Duration dropdown
-duration_label = st.selectbox("Select Pitch Duration *", ["30 seconds", "1 minute", "2 minutes"])
-duration_mapping = {"30 seconds": 30, "1 minute": 60, "2 minutes": 120}
+duration_label = st.selectbox("Select Pitch Duration *", ["30 seconds", "1 minute"])
+duration_mapping = {"30 seconds": 30, "1 minute": 60}
 duration = duration_mapping[duration_label]
 
 # Generate button
 if st.button("Generate"):
-    if name and role and industry and work_experience and strengths and career_goals and target_audience and education_level:
+    if name and role and industry and work_experience and strengths and short_career_goals and long_career_goals and long_career_goals and target_audience and education_level:
         with st.spinner("Generating your pitch..."):
-            pitch = generate_pitch(name, role, industry, work_experience, achievements, strengths, career_goals, target_audience, education_level, duration)
+            pitch = generate_pitch(name, role, industry, work_experience, achievements, strengths, short_career_goals, long_career_goals, target_audience, education_level, duration)
 
         st.subheader("Here is a striking elevator pitch:")
         st.write(pitch)

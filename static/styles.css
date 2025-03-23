@@ -1,10 +1,86 @@
 /* styles.css */
-h1 {
-    color: #4CAF50;
+:root {
+    --primary-teal: #3B9B9B;
+    --light-mint: #E8F3F3;
+    --dark-text: #333333;
+    --white: #ffffff;
 }
+
+/* Global Styles */
+body {
+    color: var(--dark-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Main container styling */
+.main .block-container {
+    padding: 2rem 3rem !important;
+    max-width: 800px !important;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 2rem auto;
+}
+
+h1 {
+    color: var(--dark-text);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    color: var(--primary-teal);
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Streamlit Elements Styling */
 .stButton>button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-teal) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 2rem !important;
+    font-weight: 500 !important;
+    width: auto !important;
+    margin: 1.5rem 0;
+}
+
+.stButton>button:hover {
+    background-color: #2d8484 !important;
+    border: none !important;
+}
+
+/* Input fields styling */
+.stTextInput>div>div>input, 
+.stTextArea>div>div>textarea,
+.stSelectbox>div>div>div {
+    border-radius: 4px !important;
+    border-color: #e0e0e0 !important;
+    background-color: var(--white) !important;
+    padding: 0.5rem !important;
+}
+
+.stTextInput>div>div>input:focus,
+.stTextArea>div>div>textarea:focus,
+.stSelectbox>div>div>div:focus {
+    border-color: var(--primary-teal) !important;
+    box-shadow: 0 0 0 1px var(--primary-teal) !important;
+}
+
+/* Required field indicator */
+label:has(+ div [aria-required="true"])::after {
+    content: " *";
+    color: var(--primary-teal);
+    font-weight: bold;
+}
+
+/* Section styling */
+.block-container {
+    padding-top: 0;
+    padding-bottom: 2rem;
 }
 
 /* Ensure full-height layout */
@@ -19,14 +95,40 @@ html, body, [data-testid="stAppViewContainer"] {
     flex: 1;
 }
 
-/* Sticky Footer */
+/* Footer styling */
 .footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    background-color: #f8f9fa; /* Light gray background */
-    padding: 10px 0;
+    background-color: var(--white);
+    padding: 2rem 0;
     text-align: center;
     font-size: 14px;
-    color: #333;
+    color: var(--dark-text);
+    border-top: 1px solid #eee;
+    margin-top: 3rem;
 }
+
+/* Markdown text styling */
+.markdown-text-container {
+    color: var(--dark-text);
+}
+
+/* Success/Info messages styling */
+.stSuccess, .stInfo {
+    background-color: var(--light-mint) !important;
+    color: var(--dark-text) !important;
+    padding: 1rem !important;
+    border-radius: 4px !important;
+}
+
+/* Warning messages */
+.stWarning {
+    border-left-color: var(--primary-teal) !important;
+    padding: 1rem !important;
+    border-radius: 4px !important;
+}
+
+/* Hide Streamlit branding */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}

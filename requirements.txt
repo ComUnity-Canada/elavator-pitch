@@ -4,3 +4,6 @@ torch
 requests
 google-genai
 python-dotenv
+openai
+dotenv
+Pillow
