@@ -1,13 +1,15 @@
-import os
+# import os
 import asyncio
 from openai import AsyncOpenAI
-from dotenv import load_dotenv
+import streamlit as st
+
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 # Fetch API key
-api_key = os.getenv("OPENAI_API_KEY")
+# api_key = os.getenv("OPENAI_API_KEY")
+api_key = st.secrets["OPENAI_API_KEY"]
 
 sample_pitches = {
     "general_professional": """Hi, my name is {name}, and I'm a {role} with expertise in {industry}. 
