@@ -1,5 +1,6 @@
 # import os
 import asyncio
+import os
 from openai import AsyncOpenAI
 import streamlit as st
 
@@ -9,7 +10,8 @@ import streamlit as st
 
 # Fetch API key
 # api_key = os.getenv("OPENAI_API_KEY")
-api_key = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+# api_key = st.secrets["OPENAI_API_KEY"]
 
 sample_pitches = {
     "general_professional": """Hi, my name is {name}, and I'm a {role} with expertise in {industry}. 
