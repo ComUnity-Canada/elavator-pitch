@@ -1,4 +1,3 @@
-# import os
 import asyncio
 import os
 from openai import AsyncOpenAI
@@ -38,10 +37,6 @@ sample_pitches = {
 }
 
 
-# Debugging: TO ensure API key is loaded
-if not api_key:
-    raise ValueError("Error: OPENAI_API_KEY is not set. Check your .env file.")
-
 async def generate_pitch_async(name, role, industry, work_experience, achievements, strengths, short_career_goals, long_career_goals, target_audience, education_level, duration):
     prompt = (
         f"Assume the role of a professional career coach and public speaking extraordinaire. "
@@ -62,8 +57,8 @@ async def generate_pitch_async(name, role, industry, work_experience, achievemen
     )
     
     try:
-        # Initialize OpenAI Async Client
-        client = AsyncOpenAI(api_key=api_key)
+        # Initialize OpenAI Async Client (uses API key from environment variables)
+        client = AsyncOpenAI()
 
         # Make async API request
         response = await client.chat.completions.create(
